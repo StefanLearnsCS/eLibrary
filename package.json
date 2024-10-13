@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production electron .",
     "dev": "cross-env NODE_ENV=development electron .",
-   "dev:watch": "cross-env NODE_ENV=development npx electronmon --trace-warnings ."
+    "dev:watch": "cross-env NODE_ENV=development npx electronmon --trace-warnings ."
   },
   "keywords": [
     "electron",
@@ -18,7 +18,8 @@
   "author": "Stefan Ilic",
   "license": "MIT",
   "dependencies": {
-    "electron": "^32.2.0"
+    "electron": "^32.2.0",
+    "formik": "^2.4.6"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"

@@ -1,11 +1,11 @@
 import React from 'react'
+import { NewBookForm } from '../components/Forms/NewBookForm';
 
 export const Work: React.FC = () => {
-    const electron = (window as any).electron;
     return (
         <div>
             <p> Work!!! </p>
-            <p> The home directory is {electron.homeDir()} </p>
+            <NewBookForm/>
         </div>
     );
 };
