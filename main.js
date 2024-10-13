@@ -6,7 +6,12 @@ function createMainWindow() {
     const mainWindow = new BrowserWindow({
         title: 'eLibrary',
         width: 1000,
-        height: 600
+        height: 600,
+        webPreferences: {
+            contextIsolation: true,
+            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.js')
+        }
     });
 
     // Check if we're in development mode
