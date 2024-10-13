@@ -1,28 +1,34 @@
-const {app, BrowserWindow} = require('electron');
+const { app, BrowserWindow } = require('electron');
 const url = require('url');
 const path = require('path');
-const { start } = require('repl');
 
-// Creating the main window of the Electron app.
 function createMainWindow() {
-    // Create a new instance of 'BrowserWindow' with the specified width, height, and title.
     const mainWindow = new BrowserWindow({
         title: 'eLibrary',
         width: 1000,
         height: 600
     });
 
-    // Format the path to the CRA index.html file which will be served in the window.
-    // 'path.join' ensures the path works across different operating systems.
-    const startUrl = url.format({
-        pathname: path.join(__dirname, './app/build/index.html'),
-        protocol: 'file',  // Uses the 'file' protocol to serve the local file
-    });
+    // Check if we're in development mode
+    const isDev = process.env.NODE_ENV === 'development';
 
-    // Load index.html into the main window.
-    mainWindow.loadURL(startUrl);
+    if (isDev) {
+        // Load the React development server
+        mainWindow.loadURL('http://localhost:3000');
+    } else {
+        // Load the static build files in production mode
+        const startUrl = url.format({
+            pathname: path.join(__dirname, './app/build/index.html'),
+            protocol: 'file:',
+            slashes: true,
+        });
+        mainWindow.loadURL(startUrl);
+    }
+
+    // Open DevTools automatically if in development mode
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+    }
 }
 
-// After initializing, create the main window.
-// 'app.whenReady()' ensures the window is created only after the app is fully ready.
 app.whenReady().then(createMainWindow);
