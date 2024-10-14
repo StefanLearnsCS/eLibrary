@@ -13,7 +13,7 @@ export const TextField: React.FC<Props> = ({ field, form, placeholder }) => {
             type="text" 
             className="input input-bordered w-full max-w-xl" 
             {...field}  // Pass formik's field props to the input
-            placeholder={placeholder} // Optionally pass the placeholder
+            placeholder={placeholder}
         />
     )
 }

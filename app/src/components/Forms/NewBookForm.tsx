@@ -27,6 +27,7 @@ export const NewBookForm: React.FC = () => {
 
     return (
         <div>
+            <h1 className="text-2xl font-bold text-center text-gray-800 font-inter"> Book Entry Form </h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
